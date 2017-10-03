@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup} from '@angular/forms'
+import {Http, Response} from "@angular/http"
+import {Observable} from "rxjs/Rx"
+import "rxjs/add/operator/map"
+import "rxjs/add/operator/catch"
 
 @Component({
   selector: 'app-root',
@@ -10,6 +14,9 @@ import { FormControl, FormGroup} from '@angular/forms'
 export class AppComponent implements OnInit{
   roomSearch : FormGroup;
   rooms : Room[];
+
+  private baseUrl = "http://localhost:8080";
+  constructor(private http: Http){}
 
   ngOnInit(){
     this.roomSearch = new FormGroup({
@@ -24,6 +31,13 @@ export class AppComponent implements OnInit{
 
   reserveRoom(value:string){
     console.log(value);
+  }
+
+  getAll(){
+    this.http.get(this.baseUrl+"/room/reservation/v1?checkin=2017-03-18&&checkout=2017-03-18");
+  }
+  mapRoom(response : Response):Room[]{
+    return response.json().content;
   }
 }
 
