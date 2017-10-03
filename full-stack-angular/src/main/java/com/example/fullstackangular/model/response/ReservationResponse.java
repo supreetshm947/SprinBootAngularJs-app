@@ -5,7 +5,7 @@ import com.example.fullstackangular.model.Links;
 public class ReservationResponse {
 	private Long id;
 	private Integer roomNumber;
-	private Integer price;
+	private Double price;
 	private Links links;
 	
 	public ReservationResponse() {
@@ -28,10 +28,10 @@ public class ReservationResponse {
 	public void setRoomNumber(Integer roomNumber) {
 		this.roomNumber = roomNumber;
 	}
-	public Integer getPrice() {
+	public Double getPrice() {
 		return price;
 	}
-	public void setPrice(Integer price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	public Links getLinks() {
